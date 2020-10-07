@@ -1,0 +1,10 @@
+
+build/*
+ios/*
+android/*
+.dart_tool/*
+.vscode/*
+.packages
+.DS_Store
+my_app.iml
+test/*
