@@ -1,4 +1,4 @@
-# my_app
+# Gallery
 
 A sample picture gallery with Flutter.
 
