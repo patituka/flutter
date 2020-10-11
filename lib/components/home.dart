@@ -1,31 +1,51 @@
 import 'package:flutter/material.dart';
 
+import 'image.dart';
+
 class Home extends StatelessWidget {
   final title = 'My gallery';
 
   @override
   Widget build(BuildContext context) {
+    const box = SizedBox(
+      width: 120,
+      height: 120,
+      child: const DecoratedBox(
+        decoration: const BoxDecoration(color: Colors.blueGrey),
+      ),
+    );
     return MaterialApp(
       title: title,
       home: Scaffold(
         appBar: AppBar(
           title: Text(title),
+          backgroundColor: Colors.pink,
         ),
         body: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
           crossAxisCount: 3,
-          // Generate 100 widgets that display their index in the List.
-          children: List.generate(100, (index) {
+          children: List.generate(30, (index) {
             return Center(
-              child: Text(
-                'Item $index',
-                style: Theme.of(context).textTheme.headline5,
+              child: Draggable<Image>(
+                feedback: MyImage(),
+                child: MyImage(),
+                childWhenDragging: box,
               ),
             );
           }),
         ),
       ),
     );
+  }
+}
+
+class Picture extends StatefulWidget {
+  @override
+  _PictureState createState() => _PictureState();
+}
+
+class _PictureState extends State<Picture> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
