@@ -8,3 +8,4 @@ android/*
 .DS_Store
 my_app.iml
 test/*
+.env*
