@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/services/picture.service.dart';
 
-import 'image.dart';
+import 'album.dart';
 
 class Home extends StatelessWidget {
   final title = 'My gallery';
@@ -37,8 +37,8 @@ class Home extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return Center(
                             child: Draggable<Image>(
-                              feedback: MyImage(index, snapshot.data[index]),
-                              child: MyImage(index, snapshot.data[index]),
+                              feedback: Album(index, snapshot.data[index]),
+                              child: Album(index, snapshot.data[index]),
                               childWhenDragging: box,
                             ),
                           );
@@ -49,17 +49,5 @@ class Home extends StatelessWidget {
                 }),
           ),
         ));
-  }
-}
-
-class Picture extends StatefulWidget {
-  @override
-  _PictureState createState() => _PictureState();
-}
-
-class _PictureState extends State<Picture> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

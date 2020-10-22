@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/services/picture.service.dart';
+import 'package:my_app/models/picture.dart';
 
-class MyImage extends StatelessWidget {
+class Album extends StatelessWidget {
   final int index;
-  final Album album;
+  final Picture picture;
   
-  MyImage(this.index, this.album);
+  Album(this.index, this.picture);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Stack(
         children: <Widget>[
-          Image.network(this.album.urls.small,
+          Image.network(this.picture.urls.small,
               width: 120, height: 120, fit: BoxFit.cover),
           Container(
             margin: EdgeInsets.only(top: 20.0),
