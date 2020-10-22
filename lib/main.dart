@@ -5,7 +5,7 @@ import 'components/home.dart';
 
 Future main() async {
   await DotEnv().load('.env');
-    runApp(MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

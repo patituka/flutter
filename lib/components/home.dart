@@ -27,20 +27,22 @@ class Home extends StatelessWidget {
                 future: fetchAlbum(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
-                    return GridView.count(
-                      crossAxisCount: 3,
-                      children: List.builder(
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Center(
-                              child: Draggable<Image>(
-                                feedback: MyImage(snapshot.data[index]),
-                                child: MyImage(snapshot.data[index]),
-                                childWhenDragging: box,
-                              ),
-                            );
-                          }),
-                    );
+                    return GridView.builder(
+                        shrinkWrap: false,
+                        scrollDirection: Axis.vertical,
+                        gridDelegate:
+                            new SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3),
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Center(
+                            child: Draggable<Image>(
+                              feedback: MyImage(index, snapshot.data[index]),
+                              child: MyImage(index, snapshot.data[index]),
+                              childWhenDragging: box,
+                            ),
+                          );
+                        });
                   } else {
                     return Center(child: CircularProgressIndicator());
                   }
